@@ -3,7 +3,7 @@ import pgp from 'pg-promise'
 const pg = pgp();
 
 const connection = {
-    host: 'host',
+    host: 'localhost',
     port: 5432,
     database: 'car_shop_db',
     user: 'admin',

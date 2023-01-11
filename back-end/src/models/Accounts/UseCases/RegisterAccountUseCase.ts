@@ -7,7 +7,7 @@ class RegisterAccountUseCase {
 
     async execute ({ created_at, email, id, name, password: password_ }: IRegisterAccountDTO): Promise<void | Error> {
         const accountAlreadyExists = await this.accountRepository.findOne(email)
-        if (accountAlreadyExists) throw new Error('Account already exists!')
+        if (accountAlreadyExists) return Promise.reject(new Error('Account already exists!'))
 
         const salt = genSaltSync(10);
         const password = hashSync(password_, salt);
